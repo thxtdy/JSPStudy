@@ -26,9 +26,21 @@ public class TestIntToDB extends HttpServlet {
     	try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
     }
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String method = request.getMethod();
+    	System.out.println(method);
+    	
+    	if(method.equals("GET")) {
+    		doGet(request, response);
+    	} else if (method.equals("POST")) {
+    		doPost(request, response);
+    	}
+    }
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("text/html");
