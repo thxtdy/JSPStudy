@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0px;
+	font-family: arial, sans-serif;
+	background-color: #f4f4f4
+}
+
+.todo-form {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	width: 400px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0, 1);
+}
+
+form {
+	display : flex;
+	flex-direction: column;
+}
+
+label{
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+input[type="text"]{
+	margin-bottom:15px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px; 
+}
+
+button {
+	padding: 10px;
+	background-color: #28a745;
+	color:white;
+	border: none;
+	
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<!--  form 태그에서 데이터를 서버로 제출할때 반드시 name 속성이 있어야 한다. -->
+	<div class="todo-form">
+		<h2>Add Todo</h2>
+		<!--  절대 경로 -->
+		<!--  /부터 시작한다면 절대 경로를 의미하고 context-root부터 시작이다.-->
+		<form action="/Study/temp" method="post">
+			<label for="name">Name : </label> <input type="text" id="name"
+				placeholder="Enter todo title" name="name" value="박태현">
+				
+			<label for="age">Age : </label> <input type="text"
+				id="age" placeholder="Enter Todo Description"
+				name="age" value="21">
+				
+			<label for="email">E-mail : </label> <input type="text"
+				id="email" placeholder="Enter Todo Description"
+				name="email" value="thjjang04@gmail.com">
+				
+			<button type="submit">Save</button>
+		</form>
+	</div>
+
+</body>
+</html>
