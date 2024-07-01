@@ -29,7 +29,7 @@ public class TestIntToDB extends HttpServlet {
     	
 		String url = "jdbc:mysql://localhost:3306/db_todo?serverTimezone=Asia/Seoul";
 		String username = "root";
-		String password = "asd123";
+		String password = "040220";
     	
     	try { 
     		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -77,19 +77,20 @@ public class TestIntToDB extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String name = request.getParameter("name");
-		int age = Integer.parseInt(request.getParameter("age"));
+		String name = request.getParameter("userid");
+		String password = request.getParameter("password");
 		String email = request.getParameter("email");
-		
+//		int age = Integer.parseInt(request.getParameter("age"));
 		try { 
 			
-			String query = " INSERT INTO test_table(name, age, email) VALUES (?, ?, ?) ";
+			String query = " INSERT INTO sign_table(userid, password, email) VALUES (?, ?, ?) ";
 			PreparedStatement ptmt = conn.prepareStatement(query);
 			conn.setAutoCommit(false);
 			
 			ptmt.setString(1, name);
-			ptmt.setInt(2, age);
+			ptmt.setString(2, password);
 			ptmt.setString(3, email);
+//			ptmt.setInt(2, age);
 			
 			int rowCount = ptmt.executeUpdate();
 			if(rowCount > 0) {
