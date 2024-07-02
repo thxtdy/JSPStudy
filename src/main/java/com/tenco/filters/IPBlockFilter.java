@@ -8,6 +8,7 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 /*
  *  1. Filter 구현
  *  2. URL 패턴 설정 (web.xml 파일에서 설정할 예정)
@@ -31,6 +32,8 @@ public class IPBlockFilter implements Filter{
 		String remoteIP =  request.getRemoteAddr();
 		System.out.println("Request from IP : " + remoteIP);
 		
+		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		String requestURL = httpRequest.getRequestURL().toString();
 		// 차단시킬 코드 작성
 		if(remoteIP.startsWith(BLOCKED_IP_PREFIX)) {
 			System.out.println("부러쓰부러쓰 차단시켜부러쓰");
