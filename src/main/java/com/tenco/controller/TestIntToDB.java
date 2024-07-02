@@ -32,7 +32,7 @@ public class TestIntToDB extends HttpServlet {
     	
 		String url = "jdbc:mysql://localhost:3306/db_todo?serverTimezone=Asia/Seoul";
 		String username = "root";
-		String password = "asd123";
+		String password = "040220";
     	
     	try { 
     		Class.forName("com.mysql.cj.jdbc.Driver");
