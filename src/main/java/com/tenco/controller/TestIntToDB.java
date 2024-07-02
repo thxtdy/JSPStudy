@@ -11,13 +11,16 @@ import java.sql.PreparedStatement;
 import org.apache.catalina.connector.Response;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/temp")
+@WebListener
 public class TestIntToDB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static userDTO info = userDTO.getInstance();
     private Connection conn = null; // 모든 메소드에서 Connection을 사용할거야.....ㅠ
     public TestIntToDB() {
 
@@ -29,7 +32,7 @@ public class TestIntToDB extends HttpServlet {
     	
 		String url = "jdbc:mysql://localhost:3306/db_todo?serverTimezone=Asia/Seoul";
 		String username = "root";
-		String password = "040220";
+		String password = "asd123";
     	
     	try { 
     		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -77,9 +80,11 @@ public class TestIntToDB extends HttpServlet {
 		
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String name = request.getParameter("userid");
+		String userid = request.getParameter("userid");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
+		info.put(userid, password);
+		System.out.println("Sign-In Users : " + info.getSize());
 //		int age = Integer.parseInt(request.getParameter("age"));
 		try { 
 			
@@ -87,7 +92,7 @@ public class TestIntToDB extends HttpServlet {
 			PreparedStatement ptmt = conn.prepareStatement(query);
 			conn.setAutoCommit(false);
 			
-			ptmt.setString(1, name);
+			ptmt.setString(1, userid);
 			ptmt.setString(2, password);
 			ptmt.setString(3, email);
 //			ptmt.setInt(2, age);

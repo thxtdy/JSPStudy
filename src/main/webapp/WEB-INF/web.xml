@@ -10,7 +10,7 @@
     <servlet-name>TestIntToDB</servlet-name>
     <url-pattern>/TestIntToDB</url-pattern>
   </servlet-mapping>
-  <display-name>Study</display-name>
+  <display-name>JSPStudy</display-name>
   <welcome-file-list>
     <welcome-file>todo_add.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
